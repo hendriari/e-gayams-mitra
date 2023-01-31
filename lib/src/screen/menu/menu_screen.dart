@@ -1,22 +1,30 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kkn_siwalan_mitra/src/utils/adapt_size.dart';
 import 'package:kkn_siwalan_mitra/src/utils/colors.dart';
 import 'package:kkn_siwalan_mitra/src/viewmodel/menu_viewmodel.dart';
-import 'package:kkn_siwalan_mitra/src/viewmodel/user_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 class MenuScreen extends StatefulWidget {
-  const MenuScreen({Key? key}) : super(key: key);
+  final int currentIndex;
+
+  const MenuScreen({
+    Key? key,
+    this.currentIndex = 0,
+  }) : super(key: key);
 
   @override
   State<MenuScreen> createState() => _MenuScreenState();
 }
 
 class _MenuScreenState extends State<MenuScreen> {
+
   @override
   void initState() {
     super.initState();
-    context.read<UserViewModel>().refreshUsers();
+    Future.delayed(Duration.zero,(){
+      context.read<MenuViewModel>().menuIndex(index: widget.currentIndex);
+    });
   }
 
   @override
@@ -65,12 +73,8 @@ class _MenuScreenState extends State<MenuScreen> {
             currentIndex: value.currentIndex,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: Icon(Icons.home_filled),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home_filled),
-                label: 'Postinganku',
+                icon: Icon(CupertinoIcons.square_list),
+                label: 'Product',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.person_outline_rounded),

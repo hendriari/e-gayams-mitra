@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:kkn_siwalan_mitra/src/screen/menu/account/profile_screen.dart';
 import 'package:kkn_siwalan_mitra/src/screen/menu/home/home_screen.dart';
-import 'package:kkn_siwalan_mitra/src/screen/menu/my_post/postinganku_screen.dart';
 import 'package:kkn_siwalan_mitra/src/utils/colors.dart';
 import 'package:kkn_siwalan_mitra/src/widget/custom_dialogs.dart';
 
@@ -12,13 +11,19 @@ class MenuViewModel with ChangeNotifier {
 
   final List<Widget> _pages = [
     const HomeScreen(),
-    const PostingankkuScreen(),
     const ProfileScreen(),
   ];
 
   get pages => _pages[_currentIndex];
 
   set onTapped(int index) {
+    _currentIndex = index;
+    notifyListeners();
+  }
+
+  void menuIndex({
+    required int index,
+  }) {
     _currentIndex = index;
     notifyListeners();
   }

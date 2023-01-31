@@ -7,6 +7,7 @@ AppBar defaultAppBar({
   required String title,
   bool? centerTitle,
   Widget? leading,
+  List<Widget>? action,
 }) {
   return AppBar(
     title: Text(
@@ -19,6 +20,7 @@ AppBar defaultAppBar({
     centerTitle: centerTitle ?? true,
     backgroundColor: MyColor.neutral900,
     elevation: 0,
+    actions: action,
     leading: leading,
   );
 }

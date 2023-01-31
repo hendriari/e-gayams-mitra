@@ -45,6 +45,9 @@ dependencies:
   google_fonts: ^3.0.1
   email_validator: ^2.1.17
   intl: any
+  image_picker: ^0.8.6+1
+  currency_text_input_formatter: ^2.1.8
+  connectivity: any
 
 
 dev_dependencies:

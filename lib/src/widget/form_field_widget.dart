@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:kkn_siwalan_mitra/src/utils/adapt_size.dart';
 import 'package:kkn_siwalan_mitra/src/utils/colors.dart';
 
@@ -18,6 +19,7 @@ Widget formFieldWidget({
   double? height,
   double? width,
   int? maxLines,
+  List<TextInputFormatter>? textInputFormater,
 }) {
   return SizedBox(
     height: height,
@@ -31,6 +33,7 @@ Widget formFieldWidget({
       maxLines: maxLines ?? 1,
       readOnly: readOnly ?? false,
       validator: formFieldValidator,
+      inputFormatters: textInputFormater,
       onTap: onTap,
       decoration: InputDecoration(
         filled: true,

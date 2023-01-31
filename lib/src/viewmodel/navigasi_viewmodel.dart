@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:kkn_siwalan_mitra/src/screen/auth/login_screen.dart';
 import 'package:kkn_siwalan_mitra/src/screen/auth/register_screen.dart';
 import 'package:kkn_siwalan_mitra/src/screen/menu/account/change_password_screen.dart';
+import 'package:kkn_siwalan_mitra/src/screen/menu/home/post_product_screen.dart';
 import 'package:kkn_siwalan_mitra/src/screen/menu/menu_screen.dart';
 
 class NavigasiViewModel {
@@ -92,5 +93,40 @@ class NavigasiViewModel {
       CupertinoModalPopupRoute(builder: (context) => const MenuScreen()),
       (route) => false,
     );
+  }
+
+  /// add product
+  void navigateAddProduct(BuildContext context) {
+    Navigator.push(
+      context,
+      CupertinoPageRoute(
+        builder: (context) => const PostProductScreen(),
+      ),
+    );
+  }
+
+  /// back to menu with index
+  void navigasiToMenuWithIndex({
+    required BuildContext context,
+    required int index,
+  }) {
+    Navigator.pushAndRemoveUntil(
+        context,
+        CupertinoPageRoute(
+          builder: (context) => MenuScreen(
+            currentIndex: index,
+          ),
+        ),
+            (route) => false);
+  }
+
+  /// willpoop add product
+  Future<bool> navigasiBackToMenu(BuildContext context) async {
+    Navigator.pushReplacement(
+      context,
+      CupertinoDialogRoute(
+          builder: (context) => const MenuScreen(), context: context),
+    );
+    return Future(() => true);
   }
 }

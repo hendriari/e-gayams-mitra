@@ -4,10 +4,13 @@ import 'package:flutter/services.dart';
 import 'package:kkn_siwalan_mitra/firebase_options.dart';
 import 'package:kkn_siwalan_mitra/src/screen/landing/splash_screen1.dart';
 import 'package:kkn_siwalan_mitra/src/utils/colors.dart';
+import 'package:kkn_siwalan_mitra/src/utils/enums.dart';
 import 'package:kkn_siwalan_mitra/src/utils/text_theme.dart';
 import 'package:kkn_siwalan_mitra/src/viewmodel/account_viewmodel.dart';
 import 'package:kkn_siwalan_mitra/src/viewmodel/login_register_viewmodel.dart';
 import 'package:kkn_siwalan_mitra/src/viewmodel/menu_viewmodel.dart';
+import 'package:kkn_siwalan_mitra/src/viewmodel/network_status.dart';
+import 'package:kkn_siwalan_mitra/src/viewmodel/post_product_viewmodel.dart';
 import 'package:kkn_siwalan_mitra/src/viewmodel/user_viewmodel.dart';
 import 'package:provider/provider.dart';
 
@@ -22,7 +25,6 @@ void main() async {
 class EsiwalanMitra extends StatelessWidget {
   const EsiwalanMitra({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -34,14 +36,18 @@ class EsiwalanMitra extends StatelessWidget {
         // ChangeNotifierProvider(create: (_) => ProductDummyData()),
         ChangeNotifierProvider(create: (_) => AccountViewModel()),
         // ChangeNotifierProvider(create: (_) => HomeViewModel()),
+        ChangeNotifierProvider(create: (_) => PostProductViewModel()),
+        StreamProvider<NetworkStatus>(
+          create: (_) => NetworkStatusServices().networkStatusController.stream,
+          initialData: NetworkStatus.online,
+        ),
       ],
       child: MaterialApp(
         theme: ThemeData(
           backgroundColor: MyColor.neutral900,
-          colorScheme: Theme
-              .of(context)
-              .colorScheme
-              .copyWith(secondary: MyColor.neutral900),
+          colorScheme: Theme.of(context).colorScheme.copyWith(
+                secondary: MyColor.neutral900,
+              ),
           scaffoldBackgroundColor: MyColor.neutral900,
           textTheme: myTextTheme,
         ),
