@@ -1,10 +1,18 @@
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:kkn_siwalan_mitra/src/model/product_model.dart';
+import 'package:kkn_siwalan_mitra/src/services/firebase_storage_services.dart';
+import 'package:uuid/uuid.dart';
 
 class FirestoreServices {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
+  final FirebaseStorageServices _firebaseStorageServices =
+      FirebaseStorageServices();
 
   /// update user profile
   Future updateProfil({
@@ -29,6 +37,53 @@ class FirestoreServices {
       });
     } on FirebaseException catch (e) {
       return error = e.toString();
+    }
+  }
+
+  /// upload new product
+  Future<void> uploadProduct({
+    required File file,
+    // required List<String> listFile,
+    required List<XFile> multipleXfile,
+    required String productName,
+    required String productDescrtiption,
+    required String productLocation,
+    required String productBenefit,
+    required String productPrice,
+    required List productCategory,
+    required String productRW,
+    required String productRT,
+    required String sellerName,
+  }) async {
+    try {
+      String photoUrl = await _firebaseStorageServices.uploadImage(
+          childName: 'productMitra', file: file, isPost: true);
+
+      List<String> listImage = await _firebaseStorageServices
+          .uploadMuiltipleImageFiles(multipleXfile);
+
+      String productId = const Uuid().v1();
+      ProductModel productModel = ProductModel(
+        productId: productId,
+        productName: productName,
+        productImage: photoUrl,
+        productGridImage: listImage,
+        productDescrtiption: productDescrtiption,
+        productLocation: productLocation,
+        productBenefit: productBenefit,
+        productPrice: productPrice,
+        productCategory: productCategory,
+        productRW: productRW,
+        productRT: productRT,
+        sellerName: sellerName,
+      );
+      debugPrint(listImage.toString());
+      await _firestore
+          .collection("productMitra")
+          .doc(productId)
+          .set(productModel.toJson());
+    } on FirebaseException catch (e) {
+      debugPrint(e.toString());
     }
   }
 }

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:kkn_siwalan_mitra/src/screen/error/network_aware.dart';
 import 'package:kkn_siwalan_mitra/src/screen/error/no_connection_screen.dart';
 import 'package:kkn_siwalan_mitra/src/utils/adapt_size.dart';
-import 'package:kkn_siwalan_mitra/src/utils/colors.dart';
 import 'package:kkn_siwalan_mitra/src/viewmodel/navigasi_viewmodel.dart';
 import 'package:kkn_siwalan_mitra/src/viewmodel/user_viewmodel.dart';
 import 'package:kkn_siwalan_mitra/src/widget/default_appbar.dart';

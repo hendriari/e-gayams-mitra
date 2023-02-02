@@ -120,13 +120,14 @@ class NavigasiViewModel {
             (route) => false);
   }
 
-  /// willpoop add product
-  Future<bool> navigasiBackToMenu(BuildContext context) async {
-    Navigator.pushReplacement(
-      context,
-      CupertinoDialogRoute(
-          builder: (context) => const MenuScreen(), context: context),
-    );
-    return Future(() => true);
-  }
+  // /// willpoop add product
+  // Future<bool> navigasiBackToMenu(BuildContext context) async {
+  //   Navigator.pop(context);
+  //   // Navigator.pushReplacement(
+  //   //   context,
+  //   //   CupertinoDialogRoute(
+  //   //       builder: (context) => const MenuScreen(), context: context),
+  //   // );
+  //   return Future(() => true);
+  // }
 }

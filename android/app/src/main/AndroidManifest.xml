@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.kkn_siwalan_mitra">
-   <application
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <application
         android:label="kkn_siwalan_mitra"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
