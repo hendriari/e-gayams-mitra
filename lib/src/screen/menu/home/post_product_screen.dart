@@ -56,6 +56,7 @@ class _PostProductScreenState extends State<PostProductScreen> {
             color: Colors.black,
           ),
         ),
+        centerTitle: false,
       ),
       body: NetworkAware(
         offlineChild: const NoConnectionScreen(),
@@ -408,6 +409,7 @@ class _PostProductScreenState extends State<PostProductScreen> {
                         } else {
                           value.uploadNewProduct(
                             context: context,
+                            uid: userProvider.usermodel!.uid,
                             productName: _namaProdukController.text,
                             productDescrtiption: _deskripsiController.text,
                             productLocation: userProvider.usermodel!.alamat,
@@ -417,6 +419,10 @@ class _PostProductScreenState extends State<PostProductScreen> {
                             productRW: userProvider.usermodel!.rw,
                             productRT: userProvider.usermodel!.rt,
                             sellerName: userProvider.usermodel!.username,
+                            usernameController: _namaProdukController,
+                            descriptionController: _deskripsiController,
+                            benefitController: _manfaatController,
+                            priceController: _hargaController,
                           );
                           debugPrint(
                             '${_manfaatController.text} ${_deskripsiController.text} ${_hargaController.text} ${postProvider.images!.path.toString()} ${postProvider.multipleImage} ${postProvider.selectionCategory.toString()}',

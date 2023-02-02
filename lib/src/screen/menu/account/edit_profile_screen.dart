@@ -58,7 +58,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           onPressed: () {
             NavigasiViewModel().navigasiToMenuWithIndex(
               context: context,
-              index: 3,
+              index: 1,
             );
           },
           icon: Icon(
@@ -70,7 +70,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       ),
       body: NetworkAware(
         offlineChild: const NoConnectionScreen(),
-        onlineChild: Padding(
+        onlineChild: SingleChildScrollView(
+          physics: const ScrollPhysics(),
           padding: EdgeInsets.only(
             left: AdaptSize.pixel8,
             right: AdaptSize.pixel8,
@@ -230,7 +231,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   height: AdaptSize.pixel28,
                 ),
 
-                const Spacer(),
 
                 /// button daftar
                 Consumer<AccountViewModel>(builder: (context, value, child) {

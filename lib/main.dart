@@ -11,6 +11,7 @@ import 'package:kkn_siwalan_mitra/src/viewmodel/login_register_viewmodel.dart';
 import 'package:kkn_siwalan_mitra/src/viewmodel/menu_viewmodel.dart';
 import 'package:kkn_siwalan_mitra/src/viewmodel/network_status.dart';
 import 'package:kkn_siwalan_mitra/src/viewmodel/post_product_viewmodel.dart';
+import 'package:kkn_siwalan_mitra/src/viewmodel/product_viewmodel.dart';
 import 'package:kkn_siwalan_mitra/src/viewmodel/user_viewmodel.dart';
 import 'package:provider/provider.dart';
 
@@ -29,14 +30,12 @@ class EsiwalanMitra extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        // ChangeNotifierProvider(create: (_) => OnBoardingViewModel()),
         ChangeNotifierProvider(create: (_) => LoginRegisterViewModel()),
         ChangeNotifierProvider(create: (_) => MenuViewModel()),
         ChangeNotifierProvider(create: (_) => UserViewModel()),
-        // ChangeNotifierProvider(create: (_) => ProductDummyData()),
         ChangeNotifierProvider(create: (_) => AccountViewModel()),
-        // ChangeNotifierProvider(create: (_) => HomeViewModel()),
         ChangeNotifierProvider(create: (_) => PostProductViewModel()),
+        ChangeNotifierProvider(create: (_) => ProductViewModel()),
         StreamProvider<NetworkStatus>(
           create: (_) => NetworkStatusServices().networkStatusController.stream,
           initialData: NetworkStatus.online,

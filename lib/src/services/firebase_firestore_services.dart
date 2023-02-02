@@ -42,9 +42,10 @@ class FirestoreServices {
 
   /// upload new product
   Future<void> uploadProduct({
+    required String uid,
     required File file,
-    // required List<String> listFile,
     required List<XFile> multipleXfile,
+    required DateTime datePublished,
     required String productName,
     required String productDescrtiption,
     required String productLocation,
@@ -64,6 +65,7 @@ class FirestoreServices {
 
       String productId = const Uuid().v1();
       ProductModel productModel = ProductModel(
+        uid: uid,
         productId: productId,
         productName: productName,
         productImage: photoUrl,
@@ -76,12 +78,27 @@ class FirestoreServices {
         productRW: productRW,
         productRT: productRT,
         sellerName: sellerName,
+        datePublished: datePublished,
       );
       debugPrint(listImage.toString());
       await _firestore
           .collection("productMitra")
           .doc(productId)
           .set(productModel.toJson());
+    } on FirebaseException catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  /// Delete Post
+  Future<void> deleteProduct({
+    required String productId,
+  }) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('productMitra')
+          .doc(productId)
+          .delete();
     } on FirebaseException catch (e) {
       debugPrint(e.toString());
     }

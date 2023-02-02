@@ -9,6 +9,7 @@ class FirebaseAuthServices {
 
   /// register
   Future registerUser({
+    required String uid,
     required String email,
     required String password,
     required String username,
@@ -25,6 +26,7 @@ class FirebaseAuthServices {
       );
 
       UserModel userModel = UserModel(
+        uid: cred.user!.uid,
         username: username,
         email: email,
         jenisKelamin: jenisKelamin,

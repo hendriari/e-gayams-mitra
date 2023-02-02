@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProductModel {
+  String uid;
   String productId;
   String productName;
   String productImage;
@@ -13,8 +14,10 @@ class ProductModel {
   String productRW;
   String productRT;
   String sellerName;
+  DateTime datePublished;
 
   ProductModel({
+    required this.uid,
     required this.productId,
     required this.productName,
     required this.productImage,
@@ -27,12 +30,14 @@ class ProductModel {
     required this.productRW,
     required this.productRT,
     required this.sellerName,
+    required this.datePublished,
   });
 
   static ProductModel fromSnap(DocumentSnapshot snap) {
     var snapshot = snap.data() as Map<String, dynamic>;
 
     return ProductModel(
+      uid: snapshot["uid"],
       productId: snapshot["productId"],
       productName: snapshot["productName"],
       productImage: snapshot["productImage"],
@@ -45,10 +50,12 @@ class ProductModel {
       productRW: snapshot["productRW"],
       productRT: snapshot["productRT"],
       sellerName: snapshot["sellerName"],
+      datePublished: snapshot["datePublished"],
     );
   }
 
   Map<String, dynamic> toJson() => {
+        "uid": uid,
         "productId": productId,
         "productName": productName,
         "productImage": productImage,
@@ -61,5 +68,6 @@ class ProductModel {
         "productRW": productRW,
         "productRT": productRT,
         "sellerName": sellerName,
+        "datePublished": datePublished,
       };
 }

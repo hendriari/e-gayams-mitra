@@ -96,6 +96,7 @@ class PostProductViewModel with ChangeNotifier {
   /// upload product
   Future<void> uploadNewProduct({
     required BuildContext context,
+    required String uid,
     required String productName,
     required String productDescrtiption,
     required String productLocation,
@@ -105,11 +106,16 @@ class PostProductViewModel with ChangeNotifier {
     required String productRW,
     required String productRT,
     required String sellerName,
+    TextEditingController? usernameController,
+    TextEditingController? descriptionController,
+    TextEditingController? benefitController,
+    TextEditingController? priceController,
   }) async {
     _isUpload = !_isUpload;
     notifyListeners();
     try {
       await FirestoreServices().uploadProduct(
+        uid: uid,
         file: _images!,
         multipleXfile: multipleImage,
         productName: productName,
@@ -121,6 +127,7 @@ class PostProductViewModel with ChangeNotifier {
         productRW: productRW,
         productRT: productRT,
         sellerName: sellerName,
+        datePublished: DateTime.now(),
       );
       _isUpload = false;
 
@@ -128,6 +135,10 @@ class PostProductViewModel with ChangeNotifier {
         _multipleImage.clear();
         _images = null;
         _selectionCategory.clear();
+        usernameController!.clear();
+        descriptionController!.clear();
+        benefitController!.clear();
+        priceController!.clear();
         notifyListeners();
       });
 
