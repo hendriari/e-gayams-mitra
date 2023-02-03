@@ -29,6 +29,12 @@ class _PostProductScreenState extends State<PostProductScreen> {
   final GlobalKey<FormState> _key = GlobalKey();
 
   @override
+  void initState() {
+    super.initState();
+    context.read<UserViewModel>().refreshUsers();
+  }
+
+  @override
   void dispose() {
     super.dispose();
     _deskripsiController.dispose();
@@ -423,9 +429,11 @@ class _PostProductScreenState extends State<PostProductScreen> {
                             descriptionController: _deskripsiController,
                             benefitController: _manfaatController,
                             priceController: _hargaController,
+                            sellerContact:
+                                userProvider.usermodel!.nomorWhatsApp,
                           );
                           debugPrint(
-                            '${_manfaatController.text} ${_deskripsiController.text} ${_hargaController.text} ${postProvider.images!.path.toString()} ${postProvider.multipleImage} ${postProvider.selectionCategory.toString()}',
+                            '${_manfaatController.text} ${_deskripsiController.text} ${_hargaController.text} ${postProvider.images!.path.toString()} ${postProvider.multipleImage} ${postProvider.selectionCategory.toString()} ${userProvider.usermodel!.nomorWhatsApp}',
                           );
                         }
                       }

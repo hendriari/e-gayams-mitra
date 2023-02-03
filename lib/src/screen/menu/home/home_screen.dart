@@ -48,76 +48,55 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       ),
-
       body: NetworkAware(
-          offlineChild: const NoConnectionScreen(),
-          onlineChild: StreamBuilder(
-            stream: productProvider.getProduct,
-            builder: (_,
-                AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(
-                  child: CircularProgressIndicator(
-                    color: MyColor.warning600,
-                  ),
-                );
-              }
-              if (snapshot.data!.docs.isEmpty) {
-                return Center(
-                  child: Text(
-                    'Belum ada produk',
-                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                          fontSize: AdaptSize.pixel14,
-                        ),
-                  ),
-                );
-              }
-              if (snapshot.hasData) {
-                return ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: snapshot.data!.docs.length,
-                    padding: EdgeInsets.only(
-                      bottom: AdaptSize.screenWidth / 1000 * 250,
-                    ),
-                    physics: const BouncingScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return productCardWidget(
-                        context: context,
-                        product: snapshot.data!.docs[index].data(),
-                      );
-                    });
-              }
+        offlineChild: const NoConnectionScreen(),
+        onlineChild: StreamBuilder(
+          stream: productProvider.getProduct,
+          builder:
+              (_, AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(
+                  color: MyColor.warning600,
+                ),
+              );
+            }
+            if (snapshot.data!.docs.isEmpty) {
               return Center(
                 child: Text(
-                  'loading..',
+                  'Belum ada produk',
                   style: Theme.of(context).textTheme.bodyText1!.copyWith(
                         fontSize: AdaptSize.pixel14,
                       ),
                 ),
               );
-            },
-          )
-
-          // Center(
-          //   child: Text(
-          //     'Belum ada Produk',
-          //     style: Theme.of(context)
-          //         .textTheme
-          //         .bodyText1!
-          //         .copyWith(fontSize: AdaptSize.pixel14),
-          //   ),
-          // ),
-          ),
-      // body: SingleChildScrollView(
-      //   physics: const BouncingScrollPhysics(),
-      //   padding: EdgeInsets.only(
-      //     left: AdaptSize.pixel8,
-      //     right: AdaptSize.pixel8,
-      //     top: AdaptSize.pixel10,
-      //     bottom: AdaptSize.screenWidth / 1000 * 250,
-      //   ),
-      //   child: Text('Belum Ada Postingan'),
-      // ),
+            }
+            if (snapshot.hasData) {
+              return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: snapshot.data!.docs.length,
+                  padding: EdgeInsets.only(
+                    bottom: AdaptSize.screenWidth / 1000 * 250,
+                  ),
+                  physics: const BouncingScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return productCardWidget(
+                      context: context,
+                      product: snapshot.data!.docs[index].data(),
+                    );
+                  });
+            }
+            return Center(
+              child: Text(
+                'loading..',
+                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                      fontSize: AdaptSize.pixel14,
+                    ),
+              ),
+            );
+          },
+        ),
+      ),
     );
   }
 }

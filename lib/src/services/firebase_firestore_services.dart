@@ -55,6 +55,7 @@ class FirestoreServices {
     required String productRW,
     required String productRT,
     required String sellerName,
+    required String sellerContact,
   }) async {
     try {
       String photoUrl = await _firebaseStorageServices.uploadImage(
@@ -79,6 +80,7 @@ class FirestoreServices {
         productRT: productRT,
         sellerName: sellerName,
         datePublished: datePublished,
+        sellerContact: sellerContact,
       );
       debugPrint(listImage.toString());
       await _firestore

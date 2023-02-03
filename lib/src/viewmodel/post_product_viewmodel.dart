@@ -106,6 +106,7 @@ class PostProductViewModel with ChangeNotifier {
     required String productRW,
     required String productRT,
     required String sellerName,
+    required String sellerContact,
     TextEditingController? usernameController,
     TextEditingController? descriptionController,
     TextEditingController? benefitController,
@@ -128,6 +129,7 @@ class PostProductViewModel with ChangeNotifier {
         productRT: productRT,
         sellerName: sellerName,
         datePublished: DateTime.now(),
+        sellerContact: sellerContact,
       );
       _isUpload = false;
 
