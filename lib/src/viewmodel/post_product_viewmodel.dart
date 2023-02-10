@@ -162,7 +162,7 @@ class PostProductViewModel with ChangeNotifier {
       CustomDialogs().customDialog(
         context: context,
         image: 'error',
-        title: e.toString(),
+        title: e.message!,
         textButton1: 'Oke',
         textButton2: '',
         bgSingleButton: MyColor.danger400,
