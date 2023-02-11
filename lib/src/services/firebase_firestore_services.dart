@@ -105,4 +105,47 @@ class FirestoreServices {
       debugPrint(e.toString());
     }
   }
+
+  // /// edit product
+  // Future updateProduct({
+  //   required String uid,
+  //   required String productName,
+  //   required File productImage,
+  //   required String productDescrtiption,
+  //   required String productLocation,
+  //   required String productBenefit,
+  //   required String productPrice,
+  //   required List productCategory,
+  //   required String productRW,
+  //   required String productRT,
+  //   required String sellerName,
+  //   required String sellerContact,
+  //   required DateTime datePublished,
+  //   required List<XFile> multipleXfile,
+  // }) async {
+  //   String photoUrl = await _firebaseStorageServices.uploadImage(
+  //       childName: 'productMitra', file: productImage, isPost: true);
+  //
+  //   List<String> listImage = await _firebaseStorageServices
+  //       .uploadMuiltipleImageFiles(multipleXfile);
+  //   await _firestore
+  //       .collection('productMitra')
+  //       .doc('productId')
+  //       .update({
+  //     "productId": uid,
+  //     "productName": productName,
+  //     "productImage": photoUrl,
+  //     "productGridImage": listImage,
+  //     "productDescription": productDescrtiption,
+  //     "productLocation": productLocation,
+  //     "productBenefit": productBenefit,
+  //     "productPrice": productPrice,
+  //     "productCategory": productCategory,
+  //     "productRW": productRW,
+  //     "productRT": productRT,
+  //     "sellerName": sellerName,
+  //     "sellerContact": sellerContact,
+  //     "datePublished": datePublished,
+  //   });
+  // }
 }

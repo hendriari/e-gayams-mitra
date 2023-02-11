@@ -62,7 +62,8 @@ class LoginRegisterViewModel with ChangeNotifier {
         alamat: alamat,
         rt: rt,
         rw: rw,
-        nomorWhatsApp: nomorWhatsApp, uid: '',
+        nomorWhatsApp: nomorWhatsApp,
+        uid: '',
       );
       _buttonRegisterLoading = false;
       notifyListeners();

@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:kkn_siwalan_mitra/src/screen/auth/login_screen.dart';
 import 'package:kkn_siwalan_mitra/src/screen/auth/register_screen.dart';
 import 'package:kkn_siwalan_mitra/src/screen/menu/account/change_password_screen.dart';
-import 'package:kkn_siwalan_mitra/src/screen/menu/home/edit_product_screen.dart';
 import 'package:kkn_siwalan_mitra/src/screen/menu/home/post_product_screen.dart';
 import 'package:kkn_siwalan_mitra/src/screen/menu/menu_screen.dart';
 
@@ -107,14 +106,14 @@ class NavigasiViewModel {
   }
 
   /// edit product
-  void navigateEditProduct(BuildContext context) {
-    Navigator.push(
-      context,
-      CupertinoPageRoute(
-        builder: (context) => const EditProductScreen(),
-      ),
-    );
-  }
+  // void navigateEditProduct(BuildContext context) {
+  //   Navigator.push(
+  //     context,
+  //     CupertinoPageRoute(
+  //       builder: (context) => const EditProductScreen(),
+  //     ),
+  //   );
+  // }
 
   /// back to menu with index
   void navigasiToMenuWithIndex({

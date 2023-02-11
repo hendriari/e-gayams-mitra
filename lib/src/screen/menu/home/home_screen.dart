@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kkn_siwalan_mitra/src/screen/error/network_aware.dart';
 import 'package:kkn_siwalan_mitra/src/screen/error/no_connection_screen.dart';
+import 'package:kkn_siwalan_mitra/src/screen/menu/home/detail_product_screen.dart';
 import 'package:kkn_siwalan_mitra/src/utils/adapt_size.dart';
 import 'package:kkn_siwalan_mitra/src/utils/colors.dart';
 import 'package:kkn_siwalan_mitra/src/viewmodel/navigasi_viewmodel.dart';
@@ -81,9 +82,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   physics: const BouncingScrollPhysics(),
                   itemBuilder: (context, index) {
                     return productCardWidget(
-                      context: context,
-                      product: snapshot.data!.docs[index].data(),
-                    );
+                        context: context,
+                        product: snapshot.data!.docs[index].data(),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                              builder: (context) => DetailProductScreen(
+                                product: snapshot.data!.docs[index].data(),
+                              ),
+                            ),
+                          );
+                        });
                   });
             }
             return Center(

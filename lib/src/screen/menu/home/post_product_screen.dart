@@ -40,6 +40,7 @@ class _PostProductScreenState extends State<PostProductScreen> {
     _deskripsiController.dispose();
     _manfaatController.dispose();
     _hargaController.dispose();
+    _namaProdukController.dispose();
   }
 
   @override
