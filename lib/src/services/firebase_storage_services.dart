@@ -29,7 +29,7 @@ class FirebaseStorageServices {
     return downloadUrl;
   }
 
-
+  /// upload multiple image firestorage
   Future<List<String>> uploadMuiltipleImageFiles(List<XFile> listImages) async {
     var imageUrls = await Future.wait(
       listImages.map(
@@ -40,6 +40,7 @@ class FirebaseStorageServices {
     return imageUrls;
   }
 
+  /// upload multiple image firestorage
   Future<String> uploadMultipleImage(XFile xfile) async {
     Reference storageReference =
         _storage.ref().child('listImage/${xfile.path}');
@@ -47,6 +48,28 @@ class FirebaseStorageServices {
       File(xfile.path),
     );
     TaskSnapshot taskSnapshot = await uploadTask;
-   return await taskSnapshot.ref.getDownloadURL();
+    return await taskSnapshot.ref.getDownloadURL();
   }
+
+  // /// update multiple image firestorage
+  // Future<List<String>> updateMuiltipleImageFiles(List<XFile> listImages) async {
+  //   var imageUrls = await Future.wait(
+  //     listImages.map(
+  //       (image) => updateMultipleImage(image),
+  //     ),
+  //   );
+  //   debugPrint('$imageUrls');
+  //   return imageUrls;
+  // }
+  //
+  // /// update multiple image firestorage
+  // Future<String> updateMultipleImage(XFile xfile) async {
+  //   Reference storageReference =
+  //       _storage.ref().child('listImage/${xfile.path}');
+  //   UploadTask uploadTask = storageReference.putFile(
+  //     File(xfile.path),
+  //   );
+  //   TaskSnapshot taskSnapshot = await uploadTask;
+  //   return await taskSnapshot.ref.getDownloadURL();
+  // }
 }

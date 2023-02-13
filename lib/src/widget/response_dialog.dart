@@ -40,7 +40,7 @@ class ResponseDialog {
                 children: [
                   Image.asset(
                     'assets/image/$image.png',
-                    height: AdaptSize.screenWidth / 1000 * 290,
+                    height: AdaptSize.screenWidth / 1000 * 300,
                     width: AdaptSize.screenWidth / 1000 * 290,
                   ),
                   SizedBox(

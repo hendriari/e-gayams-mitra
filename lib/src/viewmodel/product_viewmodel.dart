@@ -53,7 +53,7 @@ class ProductViewModel with ChangeNotifier {
       ResponseDialog.responseInfoDialog(
         context: context,
         image: 'cancel.png',
-        description: e.toString(),
+        description: e.message!,
       );
     }
   }

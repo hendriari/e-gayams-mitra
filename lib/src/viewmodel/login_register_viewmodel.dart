@@ -62,7 +62,8 @@ class LoginRegisterViewModel with ChangeNotifier {
         alamat: alamat,
         rt: rt,
         rw: rw,
-        nomorWhatsApp: nomorWhatsApp, uid: '',
+        nomorWhatsApp: nomorWhatsApp,
+        uid: '',
       );
       _buttonRegisterLoading = false;
       notifyListeners();
@@ -81,7 +82,7 @@ class LoginRegisterViewModel with ChangeNotifier {
         context: context,
         height: AdaptSize.screenWidth / 1000 * 650,
         width: AdaptSize.screenWidth / 1000 * 800,
-        description: e.toString(),
+        description: e.message!,
         image: 'error',
       );
       _buttonRegisterLoading = false;
@@ -117,11 +118,12 @@ class LoginRegisterViewModel with ChangeNotifier {
     } on FirebaseAuthException catch (e) {
       ResponseDialog.customResponseDialog(
         context: context,
-        height: AdaptSize.screenWidth / 1000 * 650,
+        height: AdaptSize.screenWidth / 1000 * 700,
         width: AdaptSize.screenWidth / 1000 * 800,
-        description: e.toString(),
+        description: e.message!,
         image: 'error',
       );
+      debugPrint(e.message!);
       _loginLoading = false;
       notifyListeners();
     }

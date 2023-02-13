@@ -65,7 +65,7 @@ class AccountViewModel with ChangeNotifier {
       ResponseDialog.responseInfoDialog(
         context: context,
         image: 'cancel.png',
-        description: e.toString(),
+        description: e.message!,
       );
     }
   }
@@ -89,7 +89,7 @@ class AccountViewModel with ChangeNotifier {
       ResponseDialog.responseInfoDialog(
         context: context,
         image: 'error',
-        description: e.toString(),
+        description: e.message!,
       );
       _saveLoading = false;
       notifyListeners();
