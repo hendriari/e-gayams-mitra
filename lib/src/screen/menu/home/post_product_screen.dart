@@ -432,6 +432,8 @@ class _PostProductScreenState extends State<PostProductScreen> {
                             priceController: _hargaController,
                             sellerContact:
                                 userProvider.usermodel!.nomorWhatsApp,
+                            locationKelurahan:
+                                userProvider.usermodel!.kelurahan,
                           );
                           debugPrint(
                             '${_manfaatController.text} ${_deskripsiController.text} ${_hargaController.text} ${postProvider.images!.path.toString()} ${postProvider.multipleImage} ${postProvider.selectionCategory.toString()} ${userProvider.usermodel!.nomorWhatsApp}',

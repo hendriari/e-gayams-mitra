@@ -57,4 +57,17 @@ class FormValidators {
     }
     return null;
   }
+
+  /// common validate
+  static String? whatsAppValidate({
+    String? value,
+    String? values,
+  }) {
+    if (value!.isEmpty) {
+      return '$values tidak boleh kosong !';
+    } else if (!RegExp(r'^[1-9]\d{9,12}$').hasMatch(value)) {
+      return 'Angka awal dimulai tanpa 0';
+    }
+    return null;
+  }
 }

@@ -15,6 +15,7 @@ class ProductModel {
   String productRT;
   String sellerName;
   String sellerContact;
+  String locationKelurahan;
   DateTime datePublished;
 
   ProductModel({
@@ -33,6 +34,7 @@ class ProductModel {
     required this.sellerName,
     required this.datePublished,
     required this.sellerContact,
+    required this.locationKelurahan,
   });
 
   static ProductModel fromSnap(DocumentSnapshot snap) {
@@ -54,6 +56,7 @@ class ProductModel {
       sellerName: snapshot["sellerName"],
       sellerContact: snapshot["sellerContact"],
       datePublished: snapshot["datePublished"],
+      locationKelurahan: snapshot["locationKelurahan"],
     );
   }
 
@@ -73,5 +76,6 @@ class ProductModel {
         "sellerName": sellerName,
         "sellerContact": sellerContact,
         "datePublished": datePublished,
+        "locationKelurahan": locationKelurahan,
       };
 }

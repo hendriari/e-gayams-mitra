@@ -8,8 +8,10 @@ import 'package:kkn_siwalan_mitra/src/viewmodel/account_viewmodel.dart';
 import 'package:kkn_siwalan_mitra/src/viewmodel/navigasi_viewmodel.dart';
 import 'package:kkn_siwalan_mitra/src/viewmodel/user_viewmodel.dart';
 import 'package:kkn_siwalan_mitra/src/widget/button_widget.dart';
+import 'package:kkn_siwalan_mitra/src/widget/custom_dialogs.dart';
 import 'package:kkn_siwalan_mitra/src/widget/default_appbar.dart';
 import 'package:kkn_siwalan_mitra/src/widget/form_field_widget.dart';
+import 'package:kkn_siwalan_mitra/src/widget/horizontal_picker_widget.dart';
 import 'package:kkn_siwalan_mitra/src/widget/string_radio_button.dart';
 import 'package:provider/provider.dart';
 
@@ -28,6 +30,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final TextEditingController _noWAontroller = TextEditingController();
   final ValueNotifier<String> _gender = ValueNotifier<String>('female');
   final GlobalKey<FormState> _formKey = GlobalKey();
+  ValueNotifier<String> stringKelurahanLocation = ValueNotifier<String>('Test');
 
   @override
   void initState() {
@@ -89,8 +92,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   label: 'Username',
                   hint: profileProvider.usermodel!.username,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  formFieldValidator: (value) => FormValidators.usernameValidate(
-                      value: _usernameController.text),
+                  formFieldValidator: (value) =>
+                      FormValidators.usernameValidate(
+                          value: _usernameController.text),
                 ),
 
                 SizedBox(
@@ -110,13 +114,15 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     child: Text(
                       '+62',
                       style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                          color: MyColor.neutral500, fontSize: AdaptSize.pixel14),
+                          color: MyColor.neutral500,
+                          fontSize: AdaptSize.pixel14),
                       textAlign: TextAlign.center,
                     ),
                   ),
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  formFieldValidator: (value) => FormValidators.commonValidate(
-                      value: _noWAontroller.text, values: 'Nomor Whatsapp'),
+                  formFieldValidator: (value) =>
+                      FormValidators.whatsAppValidate(
+                          value: _noWAontroller.text, values: 'Nomor Whatsapp'),
                 ),
 
                 SizedBox(
@@ -210,8 +216,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       label: 'RT',
                       hint: profileProvider.usermodel!.rt,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
-                      formFieldValidator: (value) => FormValidators.rtrwValidate(
-                          rukun: _rtController.text, value: 'RT', values: 'RT'),
+                      formFieldValidator: (value) =>
+                          FormValidators.rtrwValidate(
+                              rukun: _rtController.text,
+                              value: 'RT',
+                              values: 'RT'),
                     ),
                     formFieldWidget(
                       width: AdaptSize.screenWidth / 2.15,
@@ -221,16 +230,31 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       label: 'RW',
                       hint: profileProvider.usermodel!.rw,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
-                      formFieldValidator: (value) => FormValidators.rtrwValidate(
-                          rukun: _rwController.text, value: 'RW', values: 'RW'),
+                      formFieldValidator: (value) =>
+                          FormValidators.rtrwValidate(
+                              rukun: _rwController.text,
+                              value: 'RW',
+                              values: 'RW'),
                     ),
                   ],
                 ),
 
                 SizedBox(
-                  height: AdaptSize.pixel28,
+                  height: AdaptSize.pixel14,
                 ),
 
+                SizedBox(
+                  height: AdaptSize.screenWidth / 1000 * 400,
+                  width: double.infinity,
+                  child: horizontalPicker(
+                    context: context,
+                    isSelected: stringKelurahanLocation,
+                  ),
+                ),
+
+                SizedBox(
+                  height: AdaptSize.pixel28,
+                ),
 
                 /// button daftar
                 Consumer<AccountViewModel>(builder: (context, value, child) {
@@ -241,14 +265,32 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     foregroundColor: MyColor.neutral900,
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        value.updateUserData(
-                          context: context,
-                          username: _usernameController.text,
-                          gender: _gender.value,
-                          alamat: _alamatController.text,
-                          rt: _rtController.text,
-                          rw: _rwController.text,
-                        );
+                        if (stringKelurahanLocation.value == 'Test') {
+                          CustomDialogs().customDialog(
+                            context: context,
+                            image: 'cancel',
+                            title: 'Lokasi Kelurahan Tidak Boleh Kosong',
+                            textButton1: 'Kembali',
+                            textButton2: '',
+                            singleButton: true,
+                            singleOnpressed: () {
+                              Navigator.pop(context);
+                            },
+                            bgSingleButton: MyColor.danger400,
+                          );
+                          debugPrint(stringKelurahanLocation.value);
+                        } else {
+                          value.updateUserData(
+                            context: context,
+                            username: _usernameController.text,
+                            gender: _gender.value,
+                            alamat: _alamatController.text,
+                            rt: _rtController.text,
+                            rw: _rwController.text,
+                            kelurahan: stringKelurahanLocation.value,
+                            nomorWhatsApp: _noWAontroller.text,
+                          );
+                        }
                       }
                     },
                     child: value.saveLoading
