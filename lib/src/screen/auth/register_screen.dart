@@ -259,6 +259,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
 
+              SizedBox(
+                height: AdaptSize.pixel14,
+              ),
+
               /// password
               Consumer<LoginRegisterViewModel>(
                   builder: (context, value, child) {

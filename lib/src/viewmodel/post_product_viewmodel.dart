@@ -16,7 +16,7 @@ class PostProductViewModel with ChangeNotifier {
     final ImagePicker imagePicker = ImagePicker();
     final XFile? pickedImage = await imagePicker.pickImage(
       source: ImageSource.camera,
-      imageQuality: 50,
+      imageQuality: 30,
     );
     _images = File(pickedImage!.path);
     notifyListeners();
@@ -31,7 +31,7 @@ class PostProductViewModel with ChangeNotifier {
   Future<void> pickMultipleImage() async {
     final ImagePicker multiplePicker = ImagePicker();
     final List<XFile> pickMultiple = await multiplePicker.pickMultiImage(
-      imageQuality: 30,
+      imageQuality: 20,
     );
     if (pickMultiple.isNotEmpty) {
       _multipleImage.addAll(pickMultiple);
