@@ -19,7 +19,7 @@ Widget productCardWidget({
     splashColor: MyColor.neutral900,
     borderRadius: BorderRadius.circular(16),
     child: Container(
-      height: AdaptSize.screenWidth / 1000 * 825,
+      height: AdaptSize.screenWidth / 1000 * 850,
       width: double.infinity,
       margin: EdgeInsets.all(AdaptSize.pixel8),
       padding: EdgeInsets.all(AdaptSize.pixel8),

@@ -6,7 +6,9 @@ import 'package:kkn_siwalan_mitra/src/utils/form_validators.dart';
 import 'package:kkn_siwalan_mitra/src/viewmodel/login_register_viewmodel.dart';
 import 'package:kkn_siwalan_mitra/src/viewmodel/navigasi_viewmodel.dart';
 import 'package:kkn_siwalan_mitra/src/widget/button_widget.dart';
+import 'package:kkn_siwalan_mitra/src/widget/custom_dialogs.dart';
 import 'package:kkn_siwalan_mitra/src/widget/form_field_widget.dart';
+import 'package:kkn_siwalan_mitra/src/widget/horizontal_picker_widget.dart';
 import 'package:kkn_siwalan_mitra/src/widget/rich_text_widget.dart';
 import 'package:kkn_siwalan_mitra/src/widget/string_radio_button.dart';
 import 'package:provider/provider.dart';
@@ -29,6 +31,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _numberWA = TextEditingController();
   final ValueNotifier<String> _gender = ValueNotifier<String>('female');
   final GlobalKey<FormState> _formKey = GlobalKey();
+
+  ValueNotifier<String> stringKelurahanLocation = ValueNotifier<String>('Test');
 
   @override
   void dispose() {
@@ -128,7 +132,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 hint: '8123456789',
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                formFieldValidator: (value) => FormValidators.commonValidate(
+                formFieldValidator: (value) => FormValidators.whatsAppValidate(
                   values: 'Nomor WhatsApp',
                   value: value,
                 ),
@@ -246,6 +250,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 height: AdaptSize.pixel14,
               ),
 
+              SizedBox(
+                height: AdaptSize.screenWidth / 1000 * 400,
+                width: double.infinity,
+                child: horizontalPicker(
+                  context: context,
+                  isSelected: stringKelurahanLocation,
+                ),
+              ),
+
+              SizedBox(
+                height: AdaptSize.pixel14,
+              ),
+
               /// password
               Consumer<LoginRegisterViewModel>(
                   builder: (context, value, child) {
@@ -330,17 +347,34 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   foregroundColor: MyColor.neutral900,
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      value.createUsers(
-                        context: context,
-                        email: _email.text,
-                        password: _password.text,
-                        username: _username.text,
-                        jenisKelamin: _gender.value,
-                        alamat: _alamat.text,
-                        rt: _rt.text,
-                        rw: _rw.text,
-                        nomorWhatsApp: _numberWA.text,
-                      );
+                      if (stringKelurahanLocation.value == 'Test') {
+                        CustomDialogs().customDialog(
+                          context: context,
+                          image: 'cancel',
+                          title: 'Lokasi Kelurahan Tidak Boleh Kosong',
+                          textButton1: 'Kembali',
+                          textButton2: '',
+                          singleButton: true,
+                          singleOnpressed: () {
+                            Navigator.pop(context);
+                          },
+                          bgSingleButton: MyColor.danger400,
+                        );
+                        debugPrint(stringKelurahanLocation.value);
+                      } else {
+                        value.createUsers(
+                          context: context,
+                          email: _email.text,
+                          password: _password.text,
+                          username: _username.text,
+                          jenisKelamin: _gender.value,
+                          alamat: _alamat.text,
+                          rt: _rt.text,
+                          rw: _rw.text,
+                          nomorWhatsApp: _numberWA.text,
+                          kelurahan: stringKelurahanLocation.value,
+                        );
+                      }
                     }
                   },
                   child: value.buttonRegisterLoading

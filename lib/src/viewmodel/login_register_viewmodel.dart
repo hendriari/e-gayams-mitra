@@ -50,6 +50,7 @@ class LoginRegisterViewModel with ChangeNotifier {
     required String rt,
     required String rw,
     required String nomorWhatsApp,
+    required String kelurahan,
   }) async {
     _buttonRegisterLoading = true;
     notifyListeners();
@@ -64,6 +65,7 @@ class LoginRegisterViewModel with ChangeNotifier {
         rw: rw,
         nomorWhatsApp: nomorWhatsApp,
         uid: '',
+        kelurahan: kelurahan,
       );
       _buttonRegisterLoading = false;
       notifyListeners();

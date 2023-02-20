@@ -25,8 +25,8 @@ class CustomDialogs {
         builder: (context) {
           return Center(
             child: Container(
-              height: AdaptSize.screenWidth / 1000 * 650,
-              width: AdaptSize.screenWidth / 1000 * 650,
+              height: AdaptSize.screenWidth / 1000 * 700,
+              width: AdaptSize.screenWidth / 1000 * 700,
               padding: EdgeInsets.only(
                 left: AdaptSize.pixel8,
                 right: AdaptSize.pixel8,

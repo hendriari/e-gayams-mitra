@@ -40,6 +40,8 @@ class AccountViewModel with ChangeNotifier {
     required String alamat,
     required String rt,
     required String rw,
+    required String kelurahan,
+    required String nomorWhatsApp,
   }) async {
     _saveLoading = !_saveLoading;
     notifyListeners();
@@ -51,6 +53,8 @@ class AccountViewModel with ChangeNotifier {
         alamat: alamat,
         rt: rt,
         rw: rw,
+        kelurahan: kelurahan,
+        nomorWhatsApp: nomorWhatsApp,
       );
       _saveLoading = false;
       ResponseDialog.responseInfoDialog(
