@@ -46,6 +46,17 @@ class PostProductViewModel with ChangeNotifier {
     notifyListeners();
   }
 
+  /// -----------------------------------------------------------------------
+  List locationKelurahan = [
+    'Kel. Siwalan',
+    'Kel. Gayamsari',
+    'Kel. Sambirejo',
+    'Kel. Pandean Lamper',
+    'Kel. Sawah Besar',
+    'Kel. Tambakrejo',
+    'Kel. Kaligawe',
+  ];
+
   ///------------------------------------------------------------------------
   /// categori
 
@@ -53,39 +64,52 @@ class PostProductViewModel with ChangeNotifier {
 
   bool get selected => _selected;
 
-  final List<String> _kategoriList = [
+  final List _titleKategoriList = [
     'Makanan Ringan',
     'Makanan',
     'Minuman',
-    'Kebersihan',
     'Kesehatan',
     'Kecantikan',
     'Fashion',
     'Kerajinan Tangan',
-    'Lainnya',
+    'Kategori Lainnya',
   ];
 
-  List<String> get kategoriList => _kategoriList;
+  List get titleKategoriList => _titleKategoriList;
 
-  final List<dynamic> _selectionCategory = [];
+  final List _imageKategoriList = [
+    'assets/image/makanan_ringan.png',
+    'assets/image/makanan.png',
+    'assets/image/minuman.png',
+    'assets/image/kesehatan.png',
+    'assets/image/kecantikan.png',
+    'assets/image/fashion.png',
+    'assets/image/handycraft.png',
+    'assets/image/any.png',
+  ];
 
-  List get selectionCategory => _selectionCategory;
+  List get imageKategoriList => _imageKategoriList;
 
-  void addCategories(String value) {
-    _selectionCategory.add(value);
-    notifyListeners();
-  }
-
-  /// remove catalog
-  void removeCateogries(String value) {
-    _selectionCategory.remove(value);
-    notifyListeners();
-  }
-
-  void clearCategories() {
-    _selectionCategory.clear();
-    notifyListeners();
-  }
+  /// note : keep untuk catatan pribadi
+  // final List<dynamic> _selectionCategory = [];
+  //
+  // List get selectionCategory => _selectionCategory;
+  //
+  // void addCategories(String value) {
+  //   _selectionCategory.add(value);
+  //   notifyListeners();
+  // }
+  //
+  // /// remove catalog
+  // void removeCateogries(String value) {
+  //   _selectionCategory.remove(value);
+  //   notifyListeners();
+  // }
+  //
+  // void clearCategories() {
+  //   _selectionCategory.clear();
+  //   notifyListeners();
+  // }
 
   /// -----------------------------------------------------------------------
 
@@ -102,7 +126,7 @@ class PostProductViewModel with ChangeNotifier {
     required String productLocation,
     required String productBenefit,
     required String productPrice,
-    required List productCategory,
+    required String productCategory,
     required String productRW,
     required String productRT,
     required String sellerName,
@@ -138,7 +162,6 @@ class PostProductViewModel with ChangeNotifier {
       Future.delayed(const Duration(milliseconds: 700), () {
         _multipleImage.clear();
         _images = null;
-        _selectionCategory.clear();
         usernameController!.clear();
         descriptionController!.clear();
         benefitController!.clear();
@@ -177,86 +200,4 @@ class PostProductViewModel with ChangeNotifier {
       notifyListeners();
     }
   }
-
-// Future<void> updateProduct({
-//   required BuildContext context,
-//   required String uid,
-//   required String productName,
-//   required String productDescrtiption,
-//   required String productLocation,
-//   required String productBenefit,
-//   required String productPrice,
-//   required List productCategory,
-//   required String productRW,
-//   required String productRT,
-//   required String sellerName,
-//   required String sellerContact,
-//   TextEditingController? usernameController,
-//   TextEditingController? descriptionController,
-//   TextEditingController? benefitController,
-//   TextEditingController? priceController,
-// }) async {
-//   _isUpload = !_isUpload;
-//   notifyListeners();
-//   try {
-//     await FirestoreServices().updateProduct(
-//       uid: uid,
-//       productImage: _images!,
-//       multipleXfile: multipleImage,
-//       productName: productName,
-//       productDescrtiption: productDescrtiption,
-//       productLocation: productLocation,
-//       productBenefit: productBenefit,
-//       productPrice: productPrice,
-//       productCategory: productCategory,
-//       productRW: productRW,
-//       productRT: productRT,
-//       sellerName: sellerName,
-//       datePublished: DateTime.now(),
-//       sellerContact: sellerContact,
-//     );
-//     _isUpload = false;
-//
-//     Future.delayed(const Duration(milliseconds: 700), () {
-//       _multipleImage.clear();
-//       _images = null;
-//       _selectionCategory.clear();
-//       usernameController!.clear();
-//       descriptionController!.clear();
-//       benefitController!.clear();
-//       priceController!.clear();
-//       notifyListeners();
-//     });
-//
-//     CustomDialogs().customDialog(
-//       context: context,
-//       image: 'success',
-//       title: 'Produk berhasil di upload',
-//       textButton1: 'Oke',
-//       textButton2: '',
-//       bgSingleButton: MyColor.warning500,
-//       singleButton: true,
-//       singleOnpressed: () {
-//         Navigator.pop(context);
-//       },
-//     );
-//
-//     notifyListeners();
-//   } on FirebaseException catch (e) {
-//     CustomDialogs().customDialog(
-//       context: context,
-//       image: 'error',
-//       title: e.message!,
-//       textButton1: 'Oke',
-//       textButton2: '',
-//       bgSingleButton: MyColor.danger400,
-//       singleButton: true,
-//       singleOnpressed: () {
-//         Navigator.pop(context);
-//       },
-//     );
-//     _isUpload = false;
-//     notifyListeners();
-//   }
-// }
 }

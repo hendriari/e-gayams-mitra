@@ -6,6 +6,7 @@ import 'package:kkn_siwalan_mitra/src/utils/colors.dart';
 import 'package:kkn_siwalan_mitra/src/utils/form_validators.dart';
 import 'package:kkn_siwalan_mitra/src/viewmodel/account_viewmodel.dart';
 import 'package:kkn_siwalan_mitra/src/viewmodel/navigasi_viewmodel.dart';
+import 'package:kkn_siwalan_mitra/src/viewmodel/post_product_viewmodel.dart';
 import 'package:kkn_siwalan_mitra/src/viewmodel/user_viewmodel.dart';
 import 'package:kkn_siwalan_mitra/src/widget/button_widget.dart';
 import 'package:kkn_siwalan_mitra/src/widget/custom_dialogs.dart';
@@ -51,6 +52,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final profileProvider = Provider.of<UserViewModel>(context, listen: false);
+    final productProvider =
+        Provider.of<PostProductViewModel>(context, listen: false);
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: defaultAppBar(
@@ -249,6 +252,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   child: horizontalPicker(
                     context: context,
                     isSelected: stringKelurahanLocation,
+                    listPicker: productProvider.locationKelurahan,
                   ),
                 ),
 

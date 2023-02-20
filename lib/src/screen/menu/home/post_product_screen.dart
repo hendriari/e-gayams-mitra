@@ -12,6 +12,7 @@ import 'package:kkn_siwalan_mitra/src/widget/button_widget.dart';
 import 'package:kkn_siwalan_mitra/src/widget/custom_dialogs.dart';
 import 'package:kkn_siwalan_mitra/src/widget/default_appbar.dart';
 import 'package:kkn_siwalan_mitra/src/widget/form_field_widget.dart';
+import 'package:kkn_siwalan_mitra/src/widget/horizontal_picker_widget.dart';
 import 'package:provider/provider.dart';
 
 class PostProductScreen extends StatefulWidget {
@@ -27,6 +28,7 @@ class _PostProductScreenState extends State<PostProductScreen> {
   final TextEditingController _hargaController = TextEditingController();
   final TextEditingController _namaProdukController = TextEditingController();
   final GlobalKey<FormState> _key = GlobalKey();
+  ValueNotifier<String> stringProductCategory = ValueNotifier<String>('Test');
 
   @override
   void initState() {
@@ -54,7 +56,6 @@ class _PostProductScreenState extends State<PostProductScreen> {
         title: 'Add Product',
         leading: IconButton(
           onPressed: () async {
-            context.read<PostProductViewModel>().clearCategories();
             Navigator.pop(context);
           },
           icon: Icon(
@@ -311,74 +312,83 @@ class _PostProductScreenState extends State<PostProductScreen> {
                   height: AdaptSize.pixel10,
                 ),
 
-                /// categori
-                Consumer<PostProductViewModel>(
-                    builder: (context, value, child) {
-                  return SizedBox(
-                    height: AdaptSize.screenWidth / 1000 * 140,
-                    width: double.infinity,
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        padding: EdgeInsets.only(bottom: AdaptSize.pixel14),
-                        itemCount: value.kategoriList.length,
-                        itemBuilder: (context, index) {
-                          final String categories = value.kategoriList[index];
-                          return value.selected ==
-                                  value.selectionCategory.contains(categories)
-                              ? buttonWidget(
-                                  onPressed: () {
-                                    value.addCategories(categories);
-                                    debugPrint(
-                                        value.selectionCategory.toString());
-                                  },
-                                  backgroundColor: MyColor.neutral900,
-                                  foregroundColor: MyColor.neutral900,
-                                  side: BorderSide(color: MyColor.warning500),
-                                  elevation: .1,
-                                  borderRadius: 40,
-                                  margin: EdgeInsets.only(
-                                    left: AdaptSize.pixel3,
-                                    right: AdaptSize.pixel3,
-                                  ),
-                                  child: Text(
-                                    value.kategoriList[index],
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyText1!
-                                        .copyWith(fontSize: AdaptSize.pixel14),
-                                  ),
-                                )
-                              : buttonWidget(
-                                  onPressed: () {
-                                    value.removeCateogries(categories);
-                                    debugPrint(
-                                        value.selectionCategory.toString());
-                                  },
-                                  backgroundColor: MyColor.warning700,
-                                  foregroundColor: MyColor.neutral900,
-                                  side: BorderSide(color: MyColor.warning600),
-                                  elevation: .1,
-                                  borderRadius: 40,
-                                  margin: EdgeInsets.only(
-                                    left: AdaptSize.pixel3,
-                                    right: AdaptSize.pixel3,
-                                  ),
-                                  child: Text(
-                                    value.kategoriList[index],
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyText1!
-                                        .copyWith(fontSize: AdaptSize.pixel14),
-                                  ),
-                                );
-                        }),
-                  );
-                }),
-
+                /// select string category list
                 SizedBox(
-                  height: AdaptSize.pixel16,
+                  height: AdaptSize.screenWidth / 1000 * 500,
+                  width: double.infinity,
+                  child: horizontalPicker(
+                    context: context,
+                    isSelected: stringProductCategory,
+                    listPicker: postProvider.titleKategoriList,
+                    imageListPicker: postProvider.imageKategoriList,
+                  ),
                 ),
+
+                /// note : sebagai catatan pribadi
+                // /// select categori and add to new list product
+                // Consumer<PostProductViewModel>(
+                //     builder: (context, value, child) {
+                //   return SizedBox(
+                //     height: AdaptSize.screenWidth / 1000 * 140,
+                //     width: double.infinity,
+                //     child: ListView.builder(
+                //         scrollDirection: Axis.horizontal,
+                //         shrinkWrap: true,
+                //         padding: EdgeInsets.only(bottom: AdaptSize.pixel14),
+                //         itemCount: value.kategoriList.length,
+                //         itemBuilder: (context, index) {
+                //           final String categories = value.kategoriList[index];
+                //           return value.selected ==
+                //                   value.selectionCategory.contains(categories)
+                //               ? buttonWidget(
+                //                   onPressed: () {
+                //                     value.addCategories(categories);
+                //                     debugPrint(
+                //                         value.selectionCategory.toString());
+                //                   },
+                //                   backgroundColor: MyColor.neutral900,
+                //                   foregroundColor: MyColor.neutral900,
+                //                   side: BorderSide(color: MyColor.warning500),
+                //                   elevation: .1,
+                //                   borderRadius: 40,
+                //                   margin: EdgeInsets.only(
+                //                     left: AdaptSize.pixel3,
+                //                     right: AdaptSize.pixel3,
+                //                   ),
+                //                   child: Text(
+                //                     value.kategoriList[index],
+                //                     style: Theme.of(context)
+                //                         .textTheme
+                //                         .bodyText1!
+                //                         .copyWith(fontSize: AdaptSize.pixel14),
+                //                   ),
+                //                 )
+                //               : buttonWidget(
+                //                   onPressed: () {
+                //                     value.removeCateogries(categories);
+                //                     debugPrint(
+                //                         value.selectionCategory.toString());
+                //                   },
+                //                   backgroundColor: MyColor.warning700,
+                //                   foregroundColor: MyColor.neutral900,
+                //                   side: BorderSide(color: MyColor.warning600),
+                //                   elevation: .1,
+                //                   borderRadius: 40,
+                //                   margin: EdgeInsets.only(
+                //                     left: AdaptSize.pixel3,
+                //                     right: AdaptSize.pixel3,
+                //                   ),
+                //                   child: Text(
+                //                     value.kategoriList[index],
+                //                     style: Theme.of(context)
+                //                         .textTheme
+                //                         .bodyText1!
+                //                         .copyWith(fontSize: AdaptSize.pixel14),
+                //                   ),
+                //                 );
+                //         }),
+                //   );
+                // }),
 
                 /// button submit
                 Consumer<PostProductViewModel>(
@@ -400,7 +410,7 @@ class _PostProductScreenState extends State<PostProductScreen> {
                             textButton2: '',
                             singleButton: true,
                           );
-                        } else if (postProvider.selectionCategory.isEmpty) {
+                        } else if (stringProductCategory.value == 'Test') {
                           CustomDialogs().customDialog(
                             context: context,
                             singleOnpressed: () {
@@ -408,7 +418,7 @@ class _PostProductScreenState extends State<PostProductScreen> {
                             },
                             bgSingleButton: MyColor.danger400,
                             image: 'error',
-                            title: 'Setidaknya terdapat 1 kategori produk !',
+                            title: 'Kategori produk tidak boleh kosong !',
                             textButton1: 'Kembali',
                             textButton2: '',
                             singleButton: true,
@@ -422,7 +432,7 @@ class _PostProductScreenState extends State<PostProductScreen> {
                             productLocation: userProvider.usermodel!.alamat,
                             productBenefit: _manfaatController.text,
                             productPrice: _hargaController.text,
-                            productCategory: postProvider.selectionCategory,
+                            productCategory: stringProductCategory.value,
                             productRW: userProvider.usermodel!.rw,
                             productRT: userProvider.usermodel!.rt,
                             sellerName: userProvider.usermodel!.username,
@@ -436,7 +446,7 @@ class _PostProductScreenState extends State<PostProductScreen> {
                                 userProvider.usermodel!.kelurahan,
                           );
                           debugPrint(
-                            '${_manfaatController.text} ${_deskripsiController.text} ${_hargaController.text} ${postProvider.images!.path.toString()} ${postProvider.multipleImage} ${postProvider.selectionCategory.toString()} ${userProvider.usermodel!.nomorWhatsApp}',
+                            '${_manfaatController.text} ${_deskripsiController.text} ${_hargaController.text} ${postProvider.images!.path.toString()} ${postProvider.multipleImage} $stringProductCategory ${userProvider.usermodel!.nomorWhatsApp}',
                           );
                         }
                       }
