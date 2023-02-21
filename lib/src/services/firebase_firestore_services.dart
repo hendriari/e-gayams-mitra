@@ -55,7 +55,7 @@ class FirestoreServices {
     required String productLocation,
     required String productBenefit,
     required String productPrice,
-    required List productCategory,
+    required String productCategory,
     required String productRW,
     required String productRT,
     required String sellerName,

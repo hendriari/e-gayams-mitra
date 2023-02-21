@@ -5,6 +5,7 @@ import 'package:kkn_siwalan_mitra/src/utils/colors.dart';
 import 'package:kkn_siwalan_mitra/src/utils/form_validators.dart';
 import 'package:kkn_siwalan_mitra/src/viewmodel/login_register_viewmodel.dart';
 import 'package:kkn_siwalan_mitra/src/viewmodel/navigasi_viewmodel.dart';
+import 'package:kkn_siwalan_mitra/src/viewmodel/post_product_viewmodel.dart';
 import 'package:kkn_siwalan_mitra/src/widget/button_widget.dart';
 import 'package:kkn_siwalan_mitra/src/widget/custom_dialogs.dart';
 import 'package:kkn_siwalan_mitra/src/widget/form_field_widget.dart';
@@ -49,6 +50,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final productProvider =
+        Provider.of<PostProductViewModel>(context, listen: false);
     return Scaffold(
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -256,6 +259,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: horizontalPicker(
                   context: context,
                   isSelected: stringKelurahanLocation,
+                  listPicker: productProvider.locationKelurahan,
                 ),
               ),
 

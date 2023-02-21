@@ -12,30 +12,6 @@ class ProductViewModel with ChangeNotifier {
 
   get getProduct => _getProduct;
 
-  /// get user detail
-  // Future<UserModel> getUserDetail() async {
-  //   User currentUser = FirebaseAuth.instance.currentUser!;
-  //
-  //   DocumentSnapshot documentSnapshot =
-  //   await _firestore.collection('mitraUser').doc(currentUser.uid).get();
-  //
-  //   return UserModel.fromSnap(documentSnapshot);
-  // }
-
-  // Future<ProductModel> getAllProduct() async {
-  //
-  //
-  //  // DocumentSnapshot documentSnapshot = FirebaseFirestore.instance
-  //  //      .collection('productMitra')
-  //  //      .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
-  //  //      .get();
-  //
-  //   // DocumentSnapshot documentSnapshot =
-  //   // FirebaseFirestore.instance.collection('mitraUser').where('uid', is)
-  //
-  //   return ProductModel.fromSnap(documentSnapshot);
-  // }
-
   /// delete product
   void deleteProductById({
     required BuildContext context,
