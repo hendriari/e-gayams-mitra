@@ -35,7 +35,7 @@ class UserModel {
       rt: snapshot["rt"],
       rw: snapshot["rw"],
       nomorWhatsApp: snapshot["nomorWhatsApp"],
-      kelurahan: snapshot["kelurahan"],
+      kelurahan: snapshot ["kelurahan"],
     );
   }
 
