@@ -72,7 +72,7 @@ class DetailProductScreen extends StatelessWidget {
                         height: AdaptSize.screenWidth / 1000 * 800,
                         width: double.infinity,
                         borderRadius: 16,
-                        imagesShimmer: 'logo_kkn_siwalan.png',
+                        imagesShimmer: 'logo_user.png',
                       ),
                     ),
                     errorWidget: (context, url, error) =>
@@ -152,7 +152,7 @@ class DetailProductScreen extends StatelessWidget {
                         placeholder: (context, url) => shimmerLoading(
                           child: cardShimmerWidget(
                             borderRadius: 16,
-                            imagesShimmer: 'logo_kkn_siwalan.png',
+                            imagesShimmer: 'logo_user.png',
                             height: AdaptSize.screenWidth / 1000 * 300,
                             width: AdaptSize.screenWidth / 1000 * 305,
                             margin: EdgeInsets.only(
