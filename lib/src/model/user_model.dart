@@ -10,6 +10,7 @@ class UserModel {
   String rw;
   String nomorWhatsApp;
   String kelurahan;
+  String role;
 
   UserModel({
     required this.uid,
@@ -21,6 +22,7 @@ class UserModel {
     required this.rw,
     required this.nomorWhatsApp,
     required this.kelurahan,
+    required this.role,
   });
 
   static UserModel fromSnap(DocumentSnapshot snap) {
@@ -35,7 +37,8 @@ class UserModel {
       rt: snapshot["rt"],
       rw: snapshot["rw"],
       nomorWhatsApp: snapshot["nomorWhatsApp"],
-      kelurahan: snapshot ["kelurahan"],
+      kelurahan: snapshot["kelurahan"],
+      role: snapshot["role"],
     );
   }
 
@@ -49,5 +52,6 @@ class UserModel {
         "rw": rw,
         "nomorWhatsApp": nomorWhatsApp,
         "kelurahan": kelurahan,
+        "role": role,
       };
 }

@@ -20,7 +20,7 @@ class UserViewModel with ChangeNotifier {
   /// get user data from firestore
   final Stream<DocumentSnapshot<Map<String, dynamic>>> _userData =
       FirebaseFirestore.instance
-          .collection('mitraUser')
+          .collection('userPhase2')
           .doc(FirebaseAuth.instance.currentUser!.uid)
           .snapshots();
 

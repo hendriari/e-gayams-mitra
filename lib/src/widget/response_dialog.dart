@@ -37,7 +37,9 @@ class ResponseDialog {
                 ],
               ),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  // const Spacer(),
                   Image.asset(
                     'assets/image/$image.png',
                     height: AdaptSize.screenWidth / 1000 * 300,
@@ -51,7 +53,9 @@ class ResponseDialog {
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       fontSize: AdaptSize.pixel16,
                     ),
+                    textAlign: TextAlign.center,
                   ),
+                  // const Spacer(),
                 ],
               ),
             ),

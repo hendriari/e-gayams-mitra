@@ -28,7 +28,7 @@ class FirestoreServices {
   }) async {
     try {
       await _firestore
-          .collection('mitraUser')
+          .collection('userPhase2')
           .doc(_firebaseAuth.currentUser!.uid)
           .update({
         'username': username,

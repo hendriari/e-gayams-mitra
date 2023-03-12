@@ -36,10 +36,11 @@ class FirebaseAuthServices {
         rw: rw,
         nomorWhatsApp: nomorWhatsApp,
         kelurahan: kelurahan,
+        role: "mitra",
       );
 
       await _firestore
-          .collection('mitraUser')
+          .collection('userPhase2')
           .doc(cred.user!.uid)
           .set(userModel.toJson());
     } on FirebaseAuthException catch (e) {
@@ -77,7 +78,7 @@ class FirebaseAuthServices {
     User currentUser = FirebaseAuth.instance.currentUser!;
 
     DocumentSnapshot documentSnapshot =
-        await _firestore.collection('mitraUser').doc(currentUser.uid).get();
+        await _firestore.collection('userPhase2').doc(currentUser.uid).get();
 
     return UserModel.fromSnap(documentSnapshot);
   }
