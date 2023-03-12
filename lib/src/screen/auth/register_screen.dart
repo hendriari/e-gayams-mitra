@@ -69,7 +69,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             children: [
               Text(
                 'Register',
-                style: Theme.of(context).textTheme.headline6!.copyWith(
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       fontSize: AdaptSize.pixel24,
                       color: MyColor.neutral500,
                     ),
@@ -77,7 +77,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
               Text(
                 'Daftar untuk menjadi mitra e-siwalan',
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       fontSize: AdaptSize.pixel12,
                       color: MyColor.neutral500,
                     ),
@@ -128,7 +128,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   padding: EdgeInsets.only(top: AdaptSize.pixel10 + 1),
                   child: Text(
                     '+62',
-                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                         color: MyColor.neutral500, fontSize: AdaptSize.pixel14),
                     textAlign: TextAlign.center,
                   ),
@@ -149,7 +149,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 'Jenis Kelamin',
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText1!
+                    .bodyLarge!
                     .copyWith(fontSize: AdaptSize.pixel14),
               ),
 
@@ -173,7 +173,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     'Perempuan',
                     style: Theme.of(context)
                         .textTheme
-                        .bodyText1!
+                        .bodyLarge!
                         .copyWith(fontSize: AdaptSize.pixel14),
                   ),
                   SizedBox(
@@ -193,7 +193,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     'Laki - Laki',
                     style: Theme.of(context)
                         .textTheme
-                        .bodyText1!
+                        .bodyLarge!
                         .copyWith(fontSize: AdaptSize.pixel14),
                   ),
                 ],
@@ -387,7 +387,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         )
                       : Text(
                           'Daftar',
-                          style: Theme.of(context).textTheme.button!.copyWith(
+                          style: Theme.of(context).textTheme.labelLarge!.copyWith(
                                 fontSize: AdaptSize.pixel16,
                               ),
                         ),
@@ -402,10 +402,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
               Center(
                 child: richTextWidget(
                     text1: 'Sudah punya akun?',
-                    textStyle1: Theme.of(context).textTheme.bodyText1!.copyWith(
+                    textStyle1: Theme.of(context).textTheme.bodyLarge!.copyWith(
                         fontSize: AdaptSize.pixel12, color: MyColor.neutral600),
                     text2: ' Login',
-                    textStyle2: Theme.of(context).textTheme.bodyText1!.copyWith(
+                    textStyle2: Theme.of(context).textTheme.bodyLarge!.copyWith(
                           fontSize: AdaptSize.pixel12,
                           color: MyColor.warning600,
                         ),

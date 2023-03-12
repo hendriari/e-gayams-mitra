@@ -209,7 +209,7 @@ class _PostProductScreenState extends State<PostProductScreen> {
                       'Ambil Ulang',
                       style: Theme.of(context)
                           .textTheme
-                          .bodyText1!
+                          .bodyLarge!
                           .copyWith(fontSize: AdaptSize.pixel12),
                     ),
                     IconButton(
@@ -463,7 +463,7 @@ class _PostProductScreenState extends State<PostProductScreen> {
                             'Posting',
                             style: Theme.of(context)
                                 .textTheme
-                                .button!
+                                .labelLarge!
                                 .copyWith(fontSize: AdaptSize.pixel16),
                           ),
                   );
@@ -481,7 +481,7 @@ class _PostProductScreenState extends State<PostProductScreen> {
   }) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.headline6!.copyWith(
+      style: Theme.of(context).textTheme.titleLarge!.copyWith(
             fontSize: AdaptSize.pixel15,
           ),
     );

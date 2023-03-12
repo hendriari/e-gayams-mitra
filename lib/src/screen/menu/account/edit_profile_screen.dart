@@ -116,7 +116,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     padding: EdgeInsets.only(top: AdaptSize.pixel10 + 1),
                     child: Text(
                       '+62',
-                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                           color: MyColor.neutral500,
                           fontSize: AdaptSize.pixel14),
                       textAlign: TextAlign.center,
@@ -136,7 +136,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   'Jenis Kelamin',
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText1!
+                      .bodyLarge!
                       .copyWith(fontSize: AdaptSize.pixel14),
                 ),
 
@@ -160,7 +160,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       'Perempuan',
                       style: Theme.of(context)
                           .textTheme
-                          .bodyText1!
+                          .bodyLarge!
                           .copyWith(fontSize: AdaptSize.pixel14),
                     ),
                     SizedBox(
@@ -180,7 +180,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       'Laki - Laki',
                       style: Theme.of(context)
                           .textTheme
-                          .bodyText1!
+                          .bodyLarge!
                           .copyWith(fontSize: AdaptSize.pixel14),
                     ),
                   ],
@@ -303,7 +303,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           )
                         : Text(
                             'Simpan',
-                            style: Theme.of(context).textTheme.button!.copyWith(
+                            style: Theme.of(context).textTheme.labelLarge!.copyWith(
                                   fontSize: AdaptSize.pixel16,
                                 ),
                           ),

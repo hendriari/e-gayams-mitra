@@ -184,7 +184,7 @@ class DetailProductScreen extends StatelessWidget {
                       product['productName'],
                       style: Theme.of(context)
                           .textTheme
-                          .headline6!
+                          .titleLarge!
                           .copyWith(fontSize: AdaptSize.pixel22),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -195,7 +195,7 @@ class DetailProductScreen extends StatelessWidget {
                       'RW ${product['productRW']}',
                       style: Theme.of(context)
                           .textTheme
-                          .bodyText1!
+                          .bodyLarge!
                           .copyWith(fontSize: AdaptSize.pixel12),
                     ),
                     backgroundColor: MyColor.neutral900,
@@ -208,7 +208,7 @@ class DetailProductScreen extends StatelessWidget {
               /// date published
               Text(
                 'Update : ${DateFormat.yMMMd().format(product['datePublished'].toDate())}',
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                   fontSize: AdaptSize.pixel10,
                   color: MyColor.neutral400,
                 ),
@@ -234,7 +234,7 @@ class DetailProductScreen extends StatelessWidget {
                     product['sellerName'],
                     style: Theme.of(context)
                         .textTheme
-                        .headline6!
+                        .titleLarge!
                         .copyWith(fontSize: AdaptSize.pixel12),
                   ),
                 ],
@@ -279,7 +279,7 @@ class DetailProductScreen extends StatelessWidget {
                       product['productDescription'],
                       style: Theme.of(context)
                           .textTheme
-                          .bodyText1!
+                          .bodyLarge!
                           .copyWith(fontSize: AdaptSize.pixel14),
                       textAlign: TextAlign.justify,
                       maxLines: null,
@@ -321,7 +321,7 @@ class DetailProductScreen extends StatelessWidget {
                     child: Text(
                       product['productBenefit'],
                       style:
-                      Theme.of(context).textTheme.bodyText1!.copyWith(
+                      Theme.of(context).textTheme.bodyLarge!.copyWith(
                         fontSize: AdaptSize.pixel14,
                       ),
                       maxLines: 2,
@@ -369,7 +369,7 @@ class DetailProductScreen extends StatelessWidget {
                       product['productLocation'],
                       style: Theme.of(context)
                           .textTheme
-                          .bodyText1!
+                          .bodyLarge!
                           .copyWith(fontSize: AdaptSize.pixel15),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -416,7 +416,7 @@ class DetailProductScreen extends StatelessWidget {
                             product['productCategory'][index],
                             style: Theme.of(context)
                                 .textTheme
-                                .bodyText1!
+                                .bodyLarge!
                                 .copyWith(
                               fontSize: AdaptSize.pixel14,
                               color: MyColor.neutral900,
@@ -445,7 +445,7 @@ class DetailProductScreen extends StatelessWidget {
   }) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.headline6!.copyWith(
+      style: Theme.of(context).textTheme.titleLarge!.copyWith(
         fontSize: AdaptSize.pixel16,
       ),
     );

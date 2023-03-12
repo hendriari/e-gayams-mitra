@@ -43,12 +43,10 @@ class EsiwalanMitra extends StatelessWidget {
       ],
       child: MaterialApp(
         theme: ThemeData(
-          backgroundColor: MyColor.neutral900,
-          colorScheme: Theme.of(context).colorScheme.copyWith(
-                secondary: MyColor.neutral900,
-              ),
           scaffoldBackgroundColor: MyColor.neutral900,
-          textTheme: myTextTheme,
+          textTheme: myTextTheme, colorScheme: Theme.of(context).colorScheme.copyWith(
+                secondary: MyColor.neutral900,
+              ).copyWith(background: MyColor.neutral900),
         ),
         debugShowCheckedModeBanner: false,
         home: const SplashScreen(),

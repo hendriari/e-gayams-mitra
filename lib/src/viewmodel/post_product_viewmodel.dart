@@ -169,17 +169,20 @@ class PostProductViewModel with ChangeNotifier {
         notifyListeners();
       });
 
-      CustomDialogs().customDialog(
-        context: context,
-        image: 'success',
-        title: 'Produk berhasil di upload',
-        textButton1: 'Oke',
-        textButton2: '',
-        bgSingleButton: MyColor.warning500,
-        singleButton: true,
-        singleOnpressed: () {
-          Navigator.pop(context);
-        },
+      Future.delayed(
+        Duration.zero,
+        () => CustomDialogs().customDialog(
+          context: context,
+          image: 'success',
+          title: 'Produk berhasil di upload',
+          textButton1: 'Oke',
+          textButton2: '',
+          bgSingleButton: MyColor.warning500,
+          singleButton: true,
+          singleOnpressed: () {
+            Navigator.pop(context);
+          },
+        ),
       );
 
       notifyListeners();

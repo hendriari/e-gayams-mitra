@@ -55,7 +55,7 @@ dynamic horizontalPicker({
                 padding: EdgeInsets.only(left: AdaptSize.pixel10),
                 child: Text(
                   listPicker[index],
-                  style: Theme.of(context).textTheme.headline6!.copyWith(
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         fontSize: AdaptSize.screenHeight * 0.016,
                       ),
                   textAlign: textAlign,

@@ -26,7 +26,7 @@ class NoConnectionScreen extends StatelessWidget {
                 'No Internet Issues',
                 style: Theme.of(context)
                     .textTheme
-                    .headline6!
+                    .titleLarge!
                     .copyWith(fontSize: AdaptSize.pixel15),
               ),
               SizedBox(
@@ -36,7 +36,7 @@ class NoConnectionScreen extends StatelessWidget {
                 'Internet connection not detected, but don\'t worry, we understand that! Please check your internet network, we will detect it automatically',
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText1!
+                    .bodyLarge!
                     .copyWith(fontSize: AdaptSize.pixel14),
                 textAlign: TextAlign.center,
               ),

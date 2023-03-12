@@ -14,7 +14,7 @@ AppBar defaultAppBar({
       title,
       style: Theme.of(context)
           .textTheme
-          .headline6!
+          .titleLarge!
           .copyWith(fontSize: AdaptSize.pixel16),
     ),
     centerTitle: centerTitle ?? true,

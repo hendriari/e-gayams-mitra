@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
               return Center(
                 child: Text(
                   'Belum ada produk',
-                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                         fontSize: AdaptSize.pixel14,
                       ),
                 ),
@@ -99,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
             return Center(
               child: Text(
                 'loading..',
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       fontSize: AdaptSize.pixel14,
                     ),
               ),

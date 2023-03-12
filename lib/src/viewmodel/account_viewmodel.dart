@@ -57,10 +57,13 @@ class AccountViewModel with ChangeNotifier {
         nomorWhatsApp: nomorWhatsApp,
       );
       _saveLoading = false;
-      ResponseDialog.responseInfoDialog(
-        context: context,
-        image: 'oke.png',
-        description: 'Update Berhasil',
+      Future.delayed(
+        Duration.zero,
+        () => ResponseDialog.responseInfoDialog(
+          context: context,
+          image: 'oke.png',
+          description: 'Update Berhasil',
+        ),
       );
       notifyListeners();
     } on FirebaseException catch (e) {

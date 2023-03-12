@@ -19,11 +19,13 @@ class ProductViewModel with ChangeNotifier {
   }) async {
     try {
       await FirestoreServices().deleteProduct(productId: productId);
-      ResponseDialog.responseInfoDialog(
-        context: context,
-        image: 'success.png',
-        description: 'Berhasil dihapus',
-      );
+      Future.delayed(Duration.zero,(){
+        ResponseDialog.responseInfoDialog(
+          context: context,
+          image: 'success.png',
+          description: 'Berhasil dihapus',
+        );
+      });
       notifyListeners();
     } on FirebaseException catch (e) {
       ResponseDialog.responseInfoDialog(

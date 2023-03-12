@@ -56,7 +56,7 @@ class CustomDialogs {
                   ),
                   Text(
                     title,
-                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                           fontSize: AdaptSize.pixel16,
                         ),
                     textAlign: TextAlign.center,
@@ -71,7 +71,7 @@ class CustomDialogs {
                           onPressed: singleOnpressed,
                           child: Text(
                             textButton1,
-                            style: Theme.of(context).textTheme.button!.copyWith(
+                            style: Theme.of(context).textTheme.labelLarge!.copyWith(
                                   fontSize: AdaptSize.pixel14,
                                   color: MyColor.neutral900,
                                 ),
@@ -94,7 +94,7 @@ class CustomDialogs {
                                 textButton1,
                                 style: Theme.of(context)
                                     .textTheme
-                                    .button!
+                                    .labelLarge!
                                     .copyWith(
                                       fontSize: AdaptSize.pixel14,
                                       color: MyColor.neutral900,
@@ -113,7 +113,7 @@ class CustomDialogs {
                                 textButton2,
                                 style: Theme.of(context)
                                     .textTheme
-                                    .button!
+                                    .labelLarge!
                                     .copyWith(
                                       fontSize: AdaptSize.pixel14,
                                     ),
